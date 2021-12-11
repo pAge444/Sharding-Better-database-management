@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <div id = "header">
+        <ul>
+            <li><h1>Photogallery</h1></li>
+            <li><a href = "/auth/logout" style="font-size: 1.1em; margin-top : 29px; border-radius : 30px;" >{{ori_user.user_name}}</a></li>
+            <li><a href="/search"><i class="fa fa-search"></i></a></li>
+            <li><a href = "/profile"><i class="material-icons">person</i></a></li>
+            <li><a href = "/"><i class = "fa fa-home"></i></a></li>
+        </ul>
+    </div>
+    <div id="main_box">
+        <div id="profile_box">
+            <div id="personal">
+                <div>
+                    <img id = "profile_image" src = {{profile}}>
+                    <!--<form action="/profile" method="POST" enctype="multipart/form-data">
+                        <input type = "file" name = "profile_pic">
+                        <input type = "submit" value = "Add Profile">
+                    </form>-->
+                </div>
+                <p class = "info">{{user.user_name}}</p>
+                <p class = "info">{{user.fname}}&nbsp{{user.lname}}</p>
+                <p class="info">{{user.email}}</p>
+                {{#if check}}
+                    <p class="info"><button><a href = "/unfollow?user_name={{user.user_name}}">unfollow</a></button></p>
+                {{else}}
+                    <button><a href="/follow?user_name={{user.user_name}}">follow</a></button>
+                {{/if}}
+            </div>
+            <div id="information">
+                <div class = "box">
+                    <p class = "info2">posts</p>
+                    <p class = "info2">{{length}}</p>
+                </div>
+                <div class = "box">
+                    <p class = "info2">followers</p>
+                    <p class = "info2">{{followers.length}}</p>
+                </div>
+                <div class = "box">
+                    <p class = "info2">following</p>
+                    <p class = "info2">{{following.length}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="gallery">
+            <div class="row">
+                <div class="column">
+                    {{#each files_1}}
+                    <img src="{{this}}" style="width:100%;">
+                    {{/each}}
+                </div> 
+                <div class="column">
+                    {{#each files_2}}
+                    <img src="{{this}}" style="width:100%;">
+                    {{/each}}
+                </div> 
+                <div class="column">
+                    {{#each files_3}}
+                    <img src="{{this}}" style="width:100%;">
+                    {{/each}}
+                </div>   
+            </div>
+        </div>
+    </div>
+
+
+    <div id="side_bar">
+        <div id="followers">
+            <h3>Followers</h3>
+            {{#each followers}}
+            <div class="box4"><a href="find_user?user_name={{this.user_name}}">
+                <img class="profile_img" src = "{{this.user_profile}}">
+                <p class="p1">{{this.user_name}}</p></a>
+            </div>
+            {{/each}}
+        </div>
+        <div id="following">
+            <h3>Following</h3>
+            {{#each following}}
+            <div class="box4"><a href="find_user?user_name={{this.user_name}}">
+                <img class="profile_img" src = "{{this.user_profile}}">
+                <p class="p1">{{this.user_name}}</p></a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div id="footer">
+        
+    </div>    
+</body>
+</html>

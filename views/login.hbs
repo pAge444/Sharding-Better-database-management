@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+     <div id = "header">
+        <ul>
+            <li><h1>Photogallery</h1></li>
+            <li><a href = "/register" style="font-size: 1.1em; margin-top : 29px; border-radius : 30px;">Register</a></li>
+            <li><a href = "/login" style="font-size: 1.1em; margin-top : 29px; border-radius : 30px;">Login</a></li>
+            <li><a href = "/"><i class = "fa fa-home"></i></a></li>
+        </ul>
+    </div>
+    <div id = "register">
+        <form action="/auth/login" method = "POST">
+            <label for = "email">Email :</label>
+            <input type = "email" id = "email" name = "email">
+            <br><br>
+            <label for = "pwd">Password:</label>
+            <input type = "password" id = "pwd" name = "pwd">
+            <br><br>
+            <input type = "submit" value="Submit">
+            <input type = "reset">
+        </form>
+    </div>
+    {{#if message }}
+        <h4>{{message}}</h4>
+    {{/if}} 
+    <div id="footer">
+        
+    </div>    
+    
+</body>
+</html>
